@@ -1,0 +1,62 @@
+
+section > * {
+  display: inline-block;
+}
+
+section#team-section {
+  line-height: 1.4rem;
+  font-family: "Open Sans", serif;
+}
+
+section#philosphy-section img {
+  width: 200px;
+}
+
+section#philosphy-section div.main-inner-content {
+    font-size: 0;
+    padding: 3rem 0;
+}
+
+section#philosphy-section div.main-inner-content > div {
+    display: inline-block;
+    vertical-align:middle;
+    font-size: 1rem;
+}
+
+section#philosphy-section div.main-inner-content div.main-inner-content-image {
+  width: 25%;
+}
+
+section#philosphy-section div.main-inner-content div.main-inner-content-text {
+  width: 75%;
+}
+
+section#team-section img {
+  width: 70%;
+  border-radius: 50%;
+  margin: 1em;
+}
+
+section#team-section div.team-description-area {
+  padding: 1em;
+  width: 250px;
+}
+
+section#team-section div.team-description-area div.team-description-container {
+
+}
+
+div.team-photo-container {
+    text-align: center;
+}
+
+section#team-section div.team-description-area span.team-name,
+section#team-section div.team-description-area span.team-role {
+  display: block;
+  text-align: center;
+}
+
+section#team-section p.team-description-text {
+  font-weight: 100;
+  font-size: 0.9em;
+}

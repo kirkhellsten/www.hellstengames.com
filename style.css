@@ -1,0 +1,10 @@
+div#odd-expressions > div {
+  display: inline-block;
+  vertical-align: top;
+  padding: 1em;
+}
+
+.duplicate {
+  background: red;
+  opacity: 100%;
+}

@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Snake HTML5 Game</title>
+        <meta name="description" content="Snake HTML5 Game">
+        <meta name="author" content="Justin Hellsten">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <script>
+            "use strict";
+            let canvas;
+            let context;
+            let gameObjects;
+            let foods = [];
+            
+            const direction = {
+                UP: "up",
+                DOWN: "down",
+                LEFT: "left",
+                RIGHT: "right"
+            }
+
+            //window.onload = init;
+        
+            let blocksize = 15;
+            let canvasWidth = 795; 
+            let canvasHeight = 795;
+            let isPlaying = false;
+            let numberOfBlocksAlongCanvasWidth = canvasWidth / blocksize;
+            let numberOfBlocksAlongCanvasHeight = canvasHeight / blocksize;
+
+            let secondsPassed = 0;
+            let oldTimeStamp = 0;
+
+            let food = {
+                xi: 0,
+                yi: 0
+            };
+
+            function getRandomDirection() {
+                let randomDirection = direction[Object.keys(direction)[[Math.floor(Math.random() * Object.keys(direction).length)]]];
+                return randomDirection;
+            }
+
+            function createFood(numberOfFoods) {
+                let snake = gameObjects[0];
+                let foodCoordinates;
+                for (let i = 0; i < numberOfFoods; ++i) {
+                    foodCoordinates = randomizeFoodLocation(snake);
+                    foods.push(new Food(context, foodCoordinates[0], foodCoordinates[1]));
+                }
+            }
+
+            function randomizeFoodLocation(snake) {
+
+                let foodIndexCoordinates = [0,0];
+
+                let sxi;
+                let syi;
+
+                let allPossibleFoodLocationsMap = new Map();
+
+                // All possible food locations is indexes of all blocks 
+                // within canvas, removing block indexes occupied by snake.
+                for (let xi = 0; xi < numberOfBlocksAlongCanvasWidth; ++xi) {
+                    for (let yi = 0; yi < numberOfBlocksAlongCanvasHeight; ++yi) {
+                        allPossibleFoodLocationsMap[xi.toString() + "-" + yi.toString()] = true;
+                    }
+                }
+
+                for (let snakebitIndex = 0; snakebitIndex < snake.snakebits.length; snakebitIndex++) {
+                    sxi = snake.snakebits[snakebitIndex].xi;
+                    syi = snake.snakebits[snakebitIndex].yi;
+                    delete allPossibleFoodLocationsMap[sxi.toString() + "-" + syi.toString()];
+                } 
+
+                // Also remove other food locations from possible locations, don't want foods to overlap
+                for (let fi = 0; fi < foods.length; ++fi) {
+                    delete allPossibleFoodLocationsMap[foods[fi].xi.toString() + "-" + foods[fi].yi.toString()];
+                }
+
+                let allPossibleFoodLocationsList = [];
+
+                for (var foodLocationKey in allPossibleFoodLocationsMap) {
+                    if (allPossibleFoodLocationsMap[foodLocationKey]) {
+                        allPossibleFoodLocationsList.push(foodLocationKey);
+                    }
+                }
+
+                let foodLocationIndex = Math.floor(Math.random() * allPossibleFoodLocationsList.length);
+                var foodLocation = allPossibleFoodLocationsList[foodLocationIndex].split('-');
+                foodLocation[0] = parseInt(foodLocation[0]);
+                foodLocation[1] = parseInt(foodLocation[1]);
+
+                foodIndexCoordinates[0] = foodLocation[0];
+                foodIndexCoordinates[1] = foodLocation[1];
+
+                return foodIndexCoordinates;
+
+            }
+
+            class GameObject {
+                
+                constructor (context, xi, yi) {
+                    this.context = context;
+                    this.xi = xi;
+                    this.yi = yi;
+                    this.isColliding = false;
+                    this.elapseSeconds = 0;
+                }
+
+            }
+
+            class Food extends GameObject {
+                
+                constructor (context, xi, yi) {
+                    super(context, xi, yi);
+                }
+
+                draw() {
+                    this.context.fillStyle = '#FF8888';
+                    this.context.fillRect(this.xi * blocksize, this.yi * blocksize, blocksize, blocksize);
+                }
+
+                update(secondsPassed) {
+
+                }
+
+            }
+
+            class Snake extends GameObject {
+                
+                constructor (context, hxi, hyi, dir) {
+                    super(context, hxi, hyi);
+                    this.snakebits = [{
+                        xi: hxi, yi: hyi
+                    }];
+                    this.direction = dir;
+                    this.dead = false;
+                    this.deadAnimationDone = false;
+                    this.alpha = 1.0;
+                }
+
+                draw() {
+                    
+                    if (this.deadAnimationDone) return;
+
+                    if (this.dead == true) {
+
+                        this.alpha -= 0.005;
+                        if (this.alpha <= 0.0) {
+                            this.deadAnimationDone = true;
+                            return;
+                        }
+
+                        this.context.fillStyle = "rgba(255, 255, 255, " + this.alpha + ")";
+                    }
+
+                    for (let i = 0; i < this.snakebits.length; i++) {
+
+                        if (this.dead == false) {
+                            if (i == 0) {
+                                this.context.fillStyle = '#006400';
+                            } else {
+                                this.context.fillStyle = '#00FF00';
+                            }
+                        }
+
+                        this.context.fillRect(this.snakebits[i].xi * blocksize, 
+                                              this.snakebits[i].yi * blocksize, 
+                                              blocksize, 
+                                              blocksize);
+
+                    }
+
+                }
+
+                update(secondsPassed) {
+
+                    if (this.dead) return;
+
+                    this.elapseSeconds += secondsPassed;
+
+                    if (this.elapseSeconds >= 0.05) {
+                        this.elapseSeconds = 0;
+                    } else { 
+                        return; 
+                    }
+
+                    let newSnakeBitMade = false;
+
+                    // Check if snake head ate foods
+                    for (let fi = 0; fi < foods.length; ++fi) {
+                        if (this.snakebits[0].xi == foods[fi].xi &&
+                            this.snakebits[0].yi == foods[fi].yi) {
+                            this.addSnakeBit(5);
+                            newSnakeBitMade = true;
+                            foods.splice(fi, 1);
+                            createFood(1);
+                            break;
+                        }
+                    }
+
+                    let lastSnakeBitIndexToMove = this.snakebits.length;
+                    if (newSnakeBitMade) { 
+                        lastSnakeBitIndexToMove--;
+                    }
+
+                    // Move all other snake bits, except a newly created snake bit
+                    for (let i = lastSnakeBitIndexToMove - 1; i >= 1; i--) {
+
+                        this.snakebits[i].xi = this.snakebits[i - 1].xi;
+                        this.snakebits[i].yi = this.snakebits[i - 1].yi;
+
+                    } 
+
+                    // Move Head Bit
+                    switch (this.direction) {
+                        case direction.UP:
+                        this.snakebits[0].yi--;
+                        break;
+                        case direction.RIGHT:
+                        this.snakebits[0].xi++;
+                        break;
+                        case direction.DOWN:
+                        this.snakebits[0].yi++;
+                        break;
+                        case direction.LEFT:
+                        this.snakebits[0].xi--;
+                        break;
+                    }
+
+                    // Check if head went out of bounds, make the head appear on the opposite side
+                    if (this.snakebits[0].xi < 0) {
+                        this.snakebits[0].xi = numberOfBlocksAlongCanvasWidth - 1;
+                    } else if (this.snakebits[0].yi < 0) {
+                        this.snakebits[0].yi = numberOfBlocksAlongCanvasHeight - 1;
+                    } else if (this.snakebits[0].xi > numberOfBlocksAlongCanvasWidth - 1) {
+                        this.snakebits[0].xi = 0;
+                    } else if (this.snakebits[0].yi > numberOfBlocksAlongCanvasHeight - 1) {
+                        this.snakebits[0].yi = 0;
+                    }
+
+                    // Check if snake head ate itself
+                    for (let i = 1; i < this.snakebits.length; ++i) {
+                        if (this.snakebits[0].xi == this.snakebits[i].xi && 
+                            this.snakebits[0].yi == this.snakebits[i].yi) {
+                            this.dead = true;
+                            return;
+                        }
+                    }
+                }
+
+                changeDirection(changeDir) {
+                    switch(changeDir) {
+                        case direction.UP:
+                        case direction.DOWN:
+                        if (this.direction == direction.UP || this.direction == direction.DOWN) return;
+                        break;
+                        case direction.RIGHT:
+                        case direction.LEFT:
+                        if (this.direction == direction.RIGHT || this.direction == direction.LEFT) return;
+                        break;
+                    }
+                    this.direction = changeDir;
+                }
+
+                addSnakeBit(numberOfBits) {
+                    for (let i = 0; i < numberOfBits; ++i) {
+                        let lengthOfSnake = this.snakebits.length;
+                        let tailBit = this.snakebits[lengthOfSnake - 1];
+                        let newSnakeBit = { xi: tailBit.xi, yi: tailBit.yi };
+                        this.snakebits.push(newSnakeBit);
+                    }
+                }
+
+            }
+
+            function clearCanvas() {
+                context.fillStyle = "gray";
+                context.fillRect(0, 0, canvas.width, canvas.height);
+            }
+            
+            function getCenterIndexCoordinates() {
+                
+                let centerIndexCoordinates = [0, 0];
+                centerIndexCoordinates[0] = Math.floor(numberOfBlocksAlongCanvasWidth / 2);
+                centerIndexCoordinates[1] = Math.floor(numberOfBlocksAlongCanvasHeight / 2);
+
+                return centerIndexCoordinates;
+
+            }
+
+            function createWorld() {
+
+                let snakeCoordinates = getCenterIndexCoordinates();
+                let randomSnakeDirection = getRandomDirection();
+                let snake = new Snake(context, snakeCoordinates[0], snakeCoordinates[1], randomSnakeDirection);
+                
+                gameObjects = [
+                    snake
+                ];
+
+                snake.addSnakeBit(5);
+
+                createFood(5);
+
+            }
+        
+            function reset() {
+                foods = [];
+                init();
+            }
+
+            function init() {
+
+                isPlaying = true;
+
+                // Get a reference to the canvas
+                canvas = document.getElementById('canvas');
+                context = canvas.getContext('2d');
+                
+                createWorld();
+
+            }
+
+
+            // The proper game loop
+            window.requestAnimationFrame(gameLoop);
+
+            function gameLoop(timeStamp) {
+
+                if (!isPlaying) {
+                    window.requestAnimationFrame(gameLoop);
+                    return;
+                }
+
+                // Calculate how much time has passed
+                secondsPassed = (timeStamp - oldTimeStamp) / 1000;
+                oldTimeStamp = timeStamp;
+                                
+                // Loop over all game objects
+                for (let i = 0; i < gameObjects.length; i++) {
+                    gameObjects[i].update(secondsPassed);
+                }
+
+                clearCanvas();
+
+                // Do the same to draw
+                for (let i = 0; i < gameObjects.length; i++) {
+                    gameObjects[i].draw();
+                } 
+                
+                for (let fi = 0; fi < foods.length; fi++) {
+                    foods[fi].draw();
+                }
+
+                window.requestAnimationFrame(gameLoop);
+
+            }
+
+            let isKeyDown = false;
+
+            window.addEventListener('keydown', function(event) {
+                if (isKeyDown) return;
+                isKeyDown = true;
+                switch (event.keyCode) {
+
+                    case 37: // Left
+                    gameObjects[0].changeDirection(direction.LEFT);
+                    break;
+
+                    case 38: // Up
+                    gameObjects[0].changeDirection(direction.UP);
+                    break;
+
+                    case 39: // Right
+                    gameObjects[0].changeDirection(direction.RIGHT);
+                    break;
+
+                    case 40: // Down
+                    gameObjects[0].changeDirection(direction.DOWN);
+                    break;
+
+                }
+                isKeyDown = false;
+            }, false);
+
+            $(document).ready(function() {
+                $(".play-btn").on("click", function(e) {
+                    $(this).toggleClass("hide");
+                    $(".reset-btn").toggleClass("hide");
+                    init();
+                });
+                $(".reset-btn").on("click", function(e) {
+                    reset();
+                });
+            });
+
+        </script>
+        
+        <h1>HTML 5 Snake Game</h1>
+        <div id="canvas-wrapper">
+            <canvas id="canvas" width="795" height="795" style="border:1px solid lightgrey;">
+                Your browser does not support the HTML5 canvas tag.
+            </canvas>
+            <button class="btn play-btn" style="position: absolute; top:200px; left:20px;">Play</button> 
+            <button class="btn reset-btn hide" style="position: absolute; top:300px; left:20px;">Reset</button> 
+        </div>
+
+    </body>
+</html>

@@ -1,0 +1,745 @@
+
+@media only screen and (min-width: 1px) {
+  div.content-wrapper {
+    max-width: 448px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  div.content-wrapper {
+    max-width: 645px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  div.content-wrapper {
+    max-width: 1170px;
+  }
+}
+ 
+div.game-tiles-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+div.content-wrapper {
+  margin: auto;
+}
+
+div.game-tiles-container > a {
+    margin: 1em;
+}
+
+h1#games-title {
+    color: #FFFFFF;
+    padding: 0.5em 0 0 0.3em;
+    margin: auto;
+    font-size: 3em;
+}
+
+div.game-tiles-container img {
+  transition: transform .1s;
+  border: solid 1px rgba(0, 53, 79, 0);
+}
+
+div.game-tiles-container img:hover {
+  filter: brightness(1.5);
+  border: solid 1px rgba(0, 53, 79, .5);
+  transform: scale(1.05);
+}
+
+html body section * {
+    box-sizing: border-box;
+}
+
+html {
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+  width: 100%;
+  min-height: 100%;
+  font-size: 1rem;
+  padding: 0em;
+  margin: 0em;
+  font-family: monospace;
+}
+
+div.overlay-background {
+  -moz-transition: all .05s ease-in;
+  -o-transition: all .05s ease-in;
+  -webkit-transition: all .05s ease-in;
+  transition: all .05s ease-in;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 98;
+  display: none;
+}
+
+div.overlay-background.active {
+  background : rgba(12, 12, 12, 0.50);
+  display: block;
+}
+
+body > * {
+  box-sizing: border-box;
+}
+
+header {
+  width: 100%;
+  padding: 0em;
+  background: white;
+  display: block;
+  vertical-align: middle;
+  border-bottom: solid 0.1em #333333;
+  position: relative;
+  z-index: 99;
+}
+
+header > * {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+
+header > div#header-logo-container {
+  max-width: 145px;
+  margin-left: 1em;
+}
+
+header > div#header-logo-container > a {
+  width: 100%;
+  display: block;
+}
+
+header > a#header-hamburger-menu {
+  visibility: hidden;
+}
+
+section {
+    font-size: 0;
+}
+
+section > * {
+  font-size: 1rem;
+}
+
+section > div {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  vertical-align: top;
+}
+
+section > div.promotion-steam-slider {
+  width: 40%;
+}
+
+section > div.promotion-steam-description {
+  width: 60%;
+}
+
+section > div.promotion-steam-description > h2 {
+  padding-left: 1em;
+  font-size: 1.2em;
+}
+
+section.main-content-section > div > h1 {
+    font-size: 2em;
+    padding-bottom: 1em;
+}
+
+section.main-content-section {
+    width: 100%;
+    text-align: center;
+}
+
+section.main-content-section.blue {
+  background: #002F67;
+}
+
+section.main-content-section.dark {
+    background: #181818;
+}
+
+section.main-content-section div.main-inner-content {
+  text-align: left;
+  color: #FFFFFF;
+  max-width: 1200px;
+  width: 1200px;
+  padding: 0 0 1em 0;
+}
+
+section.main-content-section div.main-inner-content p {
+    font-size: 0.9em;
+    font-weight: 100;
+    line-height: 1.5em;
+}
+
+section#section-breakout-promotion {
+  background: #E5E5E5;
+}
+
+.steam-button {
+  width: 100px;
+}
+
+.allegro5-logo {
+  width: 100px;
+}
+
+.cplusplus-logo {
+  width: 100px;
+}
+
+/**
+  Default Page Styling
+**/
+
+/*
+section#section-main-page-promotion img {
+  width: 100%;
+  height: 500px;
+}
+
+section#section-main-page-promotion a {
+  background: rgb(0,118,190);
+  padding: 0.8em 2.25em;
+  color: white;
+  text-decoration: none;
+  border: solid 1px white;
+  position: relative;
+  top: -100px;
+  left: 100px;
+  margin-right: 1em;
+  font-size: 1.25rem;
+}
+*/
+
+.img-thumbnail {
+  background-color: rgba(0,0,0,0) !important;
+}
+
+div#games-container {
+    background: url("../imgs/HellstenGames_Background.png") no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    min-height: 30em;
+}
+
+
+img.game-tile-image {
+    width: 180px;
+    height: 250px;
+}
+
+
+section#section-main-page-games h1 {
+  font-size: 2.5rem;
+  width: 100%;
+  color: #FFFFFF;
+  margin-left: 0.8em;
+  margin-top: 0.25em;
+  margin-bottom: 0;
+  margin-right: 0;
+}
+
+div#main-page-games-items {
+    font-size: 0;
+    width: 100%;
+    height: 325px;
+}
+
+div#main-page-games-items div.games-item-container {
+  font-size: 1rem;
+  display: inline-block;
+   padding: 1em;
+   margin: 1em;
+   vertical-align: middle;
+   height: 300px;
+   width: 200px;
+   -moz-transition: all .2s ease-in;
+   -o-transition: all .2s ease-in;
+   -webkit-transition: all .2s ease-in;
+   transition: all .2s ease-in;
+}
+
+div#main-page-games-items div.games-item-container:hover {
+  padding: 0em;
+  margin: 1em 1.47em;
+  height: 280px;
+  width: 185px;
+}
+
+div#main-page-games-items div.games-item-container:hover img {
+  filter: brightness(150%);
+}
+
+div#main-page-games-items a.games-item {
+  font-size: 1rem;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: solid 1px #333333;
+  -moz-transition: all .2s ease-in;
+  -o-transition: all .2s ease-in;
+  -webkit-transition: all .2s ease-in;
+  transition: all .2s ease-in;
+}
+
+div#main-page-games-items a.games-item:hover {
+  border: solid 1px rgb(24,94,140);
+}
+
+div#main-page-games-items a.games-item img {
+    width: 100%;
+    height: 100%;
+    -moz-transition: all .2s ease-in;
+    -o-transition: all .2s ease-in;
+    -webkit-transition: all .2s ease-in;
+    transition: all .2s ease-in;
+}
+
+/** ---------------------
+  Common Header CSS
+**/
+header > nav#header-nav {
+  padding-left: 5em;
+  display: inline-block;
+}
+
+header > nav#header-nav > ul {
+  margin: 0em;
+  padding: 0em;
+  font-size: 0em;
+}
+
+header > nav#header-nav > ul > li {
+  display: inline-block;
+  text-align: center;
+  font-size: 1rem;
+}
+
+header > nav#header-nav > ul > li > a {
+  font-size: 1.2em;
+  padding: 1.48em 0.5em;
+  display: inline-block;
+  width: 100px;
+  color: #454545;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: fantasy;
+  -moz-transition: all .2s ease-in;
+  -o-transition: all .2s ease-in;
+  -webkit-transition: all .2s ease-in;
+  transition: all .2s ease-in;
+}
+
+header > nav#header-nav > ul > li > a:hover {
+    color: #000000;
+}
+
+header > nav#header-nav > ul > li > ul {
+  display: none;
+  border-top: solid 1px #333333;
+  border-bottom: solid 1px #333333;
+}
+
+header > nav#header-nav > ul > li.header-menu-parent-li.active > ul {
+  display: flex;
+  align-items: center;
+  float: left;
+  position: absolute;
+  top: 86px;
+  left: 0;
+  width: 100%;
+  box-sizing: border-box;
+  height: 175px;
+  background: rgba(35,43,60,0.8);
+  list-style-type: none;
+  z-index: 99 !important;
+  padding: 0;
+  text-align: left;
+  padding-left: 5em;
+}
+
+header > nav#header-nav > ul > li.header-menu-parent-li.active > ul > li.navmenuflyin {
+  animation: navmenuflyin 0.25s ease-out;
+  opacity: 100% ;
+}
+
+@keyframes navmenuflyin {
+ 0%   {
+   transform: translateY(-20%);
+   opacity: 0%;
+ }
+ 50% {
+   transform: translateY(-10%);
+   opacity: 10%;
+ }
+ 100% {
+   transform: translateY(0%);
+   opacity: 100% ;
+ }
+}
+
+header > nav#header-nav > ul > li.header-menu-parent-li.active > ul > li {
+
+  background: none;
+  opacity: 0%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  width: 175px;
+
+}
+
+header > nav#header-nav > ul > li.header-menu-parent-li.active > ul > li.active {
+  opacity: 100%;
+}
+
+header > nav#header-nav > ul > li.header-menu-parent-li.active > ul > li a {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: -1em;
+  width: 100%;
+}
+header > nav#header-nav > ul > li.header-menu-parent-li.active > ul > li span {
+    font-size: 0.8em;
+    color: #CCCCCC;
+    display: block;
+    width: 100%;
+    text-align: center;
+    position: relative;
+
+    -moz-transition: all .1s ease-in;
+    -o-transition: all .1s ease-in;
+    -webkit-transition: all .1s ease-in;
+    transition: all .1s ease-in;
+}
+
+header > nav#header-nav > ul > li.header-menu-parent-li.active > ul > li.new > a::before {
+  content: "New";
+  color: #FFFFFF;
+  background: red;
+  font-size: 0.8em;
+  padding: 0 0.6em 0 0.6em;
+  border: solid 2px #FFFFFF;
+  transform: rotate(-30deg);
+  display: inline-block;
+  position: relative;
+  border-radius: 0.5em;
+  pointer-events: none;
+  z-index: 99;
+  top: 1.1em;
+  left: -3em;
+}
+
+header > nav#header-nav > ul > li.header-menu-parent-li.active > ul > li.in-development > a::before {
+  content: "In Development";
+  color: #000000;
+  background: yellow;
+  font-size: 0.8em;
+  width: 115px;
+  padding: 0 0.8em 0 0.8em;
+  border: solid 2px #FFFFFF;
+  transform: rotate(-30deg);
+  display: inline-block;
+  position: relative;
+  border-radius: 0.5em;
+  pointer-events: none;
+  z-index: 99;
+  top: 4.3em;
+  left: 0em;
+}
+
+header > nav#header-nav > ul > li.header-menu-parent-li.active > ul > li img {
+  width: 85px;
+  height: 85px;
+  object-fit: cover;
+  border-radius: 0.5em;
+  border: solid 2px #FFFFFF;
+  display: block;
+  -moz-transition: all .1s ease-in;
+  -o-transition: all .1s ease-in;
+  -webkit-transition: all .1s ease-in;
+  transition: all .1s ease-in;
+}
+
+header > nav#header-nav > ul > li.header-menu-parent-li:active > ul > li a:hover img,
+header > nav#header-nav > ul > li.header-menu-parent-li.active > ul > li a:hover img {
+  filter: brightness(150%);
+}
+
+header > nav#header-nav > ul > li.header-menu-parent-li:active > ul > li a:hover span,
+header > nav#header-nav > ul > li.header-menu-parent-li.active > ul > li a:hover span {
+  color: #FFFFFF;
+}
+
+header > nav#header-nav > ul > li.header-menu-parent-li i {
+  position: relative;
+}
+
+.primary-link .arrow {
+  border: solid #454545;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  -moz-transition: border-color .2s ease-in;
+  -o-transition: border-color .2s ease-in;
+  -webkit-transition: border-color .2s ease-in;
+  transition: border-color .2s ease-in;
+}
+
+.primary-link:hover .arrow {
+  border-color: #000000;
+}
+
+.down {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  top: -5px;
+  right: -5px;
+}
+.up {
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+  top: -2.5px;
+  right: -5px;
+}
+
+/** ---------------------
+  Common Footer CSS
+**/
+footer {
+  background: white;
+  text-align: center;
+  padding: 1em 0;
+}
+
+footer a.logo {
+  width: 250px;
+  display: block;
+  margin: auto;
+  padding-bottom: 1em;
+}
+
+footer a.logo img {
+  width: 100%;
+}
+
+footer a:hover {
+    text-decoration: none;
+}
+
+footer nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+footer nav ul li {
+    display: inline-block;
+}
+
+footer nav ul li:not(:first-child)::before {
+  content: '';
+  display: inline-block;
+  height: 10px;
+  width: 1px;
+  background-color: rgba(0,0,0,0.3);
+  margin: 0 15px;
+  pointer-events: none;
+}
+
+footer nav ul li:hover a {
+  color: #000000;
+}
+
+footer nav a {
+  font-size: 0.9em;
+  color: black;
+  color: #454545;
+  text-decoration: none;
+  text-transform: uppercase;
+  -moz-transition: all 0.1s ease-in;
+  -o-transition: all 0.1s ease-in;
+  -webkit-transition: all 0.1s ease-in;
+  transition: all 0.1s ease-in;
+  font-weight: bold;
+}
+
+footer div#footer-trademark {
+  margin-top: 3em;
+  font-size: 0.7em;
+}
+
+footer div#footer-certificates-ratings img {
+    width: 83px;
+}
+
+/*
+@media not screen and (hover: none) and (pointer: coarse) {
+
+  div#mobile-banner {
+      display: none;
+  }
+
+  nav#mobile-nav {
+    display: none;
+  }
+
+  a#header-hamburger-menu {
+    display: none;
+  }
+
+}
+*/
+
+nav#footer-menu {
+
+}
+
+nav#footer-menu > ul {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+}
+
+nav#footer-menu > ul > li {
+
+}
+
+nav#footer-menu {
+  font-size: 1.25em;
+}
+
+/** Responsive Styling **/
+
+/*
+@media (max-width: 1200px) {
+
+  header > a#header-hamburger-menu {
+    visibility: hidden;
+  }
+
+  section#section-main-page-games {
+    padding: 1rem 8rem;
+  }
+}
+
+@media (max-width: 992px) {
+
+  header > a#header-hamburger-menu {
+    visibility: hidden;
+  }
+
+  section#section-main-page-games {
+    padding: 1rem 3rem;
+  }
+  div#main-page-games-items {
+      height: auto;
+  }
+}
+*/
+
+/*
+@media (max-width: 768px) {
+
+
+  header > nav#header-nav {
+    display: none;
+  }
+
+  header > a#header-hamburger-menu {
+    visibility: visible;
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100px;
+    height: 100%;
+    text-decoration: none;
+    color: #121212;
+  }
+
+  header > nav#mobile-nav.flyout {
+      animation: mobilenavflyout 0.1s ease-in;
+  }
+
+  header > nav#mobile-nav.flyin {
+      animation: mobilenavflyin 0.1s ease-in;
+      visibility: visible;
+      transform: translateX(0);
+  }
+
+
+    header > nav#header-nav.hamburger > ul > li > a {
+      color: #FFFFFF;
+    }
+
+  header > a#header-hamburger-menu i {
+      width: 100%;
+      height: 100%;
+      text-align: center;
+  }
+
+  header > a#header-hamburger-menu .fa-bars:before {
+      position: relative;
+      display: block;
+      top: 50%;
+      -ms-transform: translateY(-50%);
+      transform: translateY(-50%);
+  }
+
+  section#section-main-page-games {
+    padding: 1rem 0rem;
+  }
+  div#main-page-games-items {
+      height: auto;
+  }
+  div#main-page-games-items div.games-item-container {
+     padding: 0.25em;
+     margin: 0.25em;
+  }
+}
+
+@media (max-width: 576px) {
+
+  header > nav#mobile-nav.flyout {
+      animation: mobilenavflyout 0.1s ease-in;
+  }
+
+  header > nav#mobile-nav.flyin {
+      animation: mobilenavflyin 0.1s ease-in;
+      visibility: visible;
+      transform: translateX(0);
+  }
+
+  header > nav#header-nav {
+    display: none;
+  }
+
+  section#section-main-page-games {
+    padding: 1rem 6%;
+  }
+  div#main-page-games-items {
+    text-align: left;
+  }
+  div#main-page-games-items div.games-item-container {
+     padding: 0.25em;
+     margin: 0.25em;
+  }
+}
+*/

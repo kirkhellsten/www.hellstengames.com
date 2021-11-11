@@ -1,0 +1,21 @@
+div#canvas-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1em;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.btn {
+    font-size: 1.5em;
+    padding: 1em;
+}
+
+.hide {
+    visibility: hidden;
+}

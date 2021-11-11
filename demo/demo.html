@@ -1,0 +1,63 @@
+<html>
+<head>
+
+  <script
+    src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+    crossorigin="anonymous"></script>
+
+    <script src="timer.js"></script>
+    <script>
+
+      $(document).ready(function() {
+
+        var timer1 = CreateTimer(1000, function(elapseTime) {
+          $("body div#timer1").html("Elapse Time: " + elapseTime);
+        }, function(elapseTime) {
+          $("body div#timer1").html("Elapse Time: " + elapseTime);
+        });
+        timer1.Start();
+
+        var timer2 = CreateTimer(1000);
+        timer2.registerStartCallback(function(elapseTime) {
+          $("body div#timer2").html("Elapse Time: " + elapseTime);
+        });
+        timer2.registerIntervalCallback(function(elapseTime) {
+          $("body div#timer2").html("Elapse Time: " + elapseTime);
+        });
+        timer2.Start();
+
+        var timer3 = CreateTimer(250, function(elapseTime) {
+          $("body div#timer3").html("Elapse Time: " + elapseTime);
+        }, function(elapseTime) {
+          $("body div#timer3").html("Elapse Time: " + elapseTime);
+        });
+        timer3.Start();
+
+        var timer4 = CreateTimer(1000, function(elapseTime) {
+          $("body div#timer4").html("Elapse Time: " + elapseTime);
+        }, function(elapseTime) {
+          $("body div#timer4").html("Elapse Time: " + elapseTime);
+        });
+        timer3.Start();
+
+      });
+
+    </script>
+
+</head>
+<body>
+  <h1>Timer 1</h1>
+  <div id="timer1">
+  </div>
+  <h1>Timer 2</h1>
+  <div id="timer2">
+  </div>
+  <h1>Timer 3</h1>
+  <div id="timer3">
+  </div>
+  <h1>Timer 4</h1>
+  <div id="timer4">
+  </div>
+</body>
+</html>

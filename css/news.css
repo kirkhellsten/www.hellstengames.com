@@ -1,0 +1,103 @@
+section#section-news {
+  font-size: 1rem;
+  background: #002F67;
+  padding: 3em 13.5em;
+  font-family: "Arial";
+}
+
+section#section-news h1 {
+  font-size: 1.5em;
+  text-transform: uppercase;
+  margin-top: 0;
+}
+
+section#section-news h2 {
+    padding: 0;
+    margin: 0;
+    font-weight: normal;
+}
+
+section#section-news * {
+  color: #FFFFFF;
+}
+
+section#section-news ol  {
+    list-style-type:  none;
+    padding: 0;
+    margin: 0;
+}
+
+section#section-news ol li {
+  border-top: solid 1px #014586;
+  border-bottom: solid 1px #014586;
+  padding: 1em 0;
+}
+
+section#section-news a {
+  text-decoration: none;
+  display: block;
+}
+
+section#section-news div.article-list-item-content-grid {
+    min-height: 120px;
+}
+
+section#section-news div.article-list-item-subtitle,
+section#section-news div.article-list-item-description,
+section#section-news div.article-list-item-footer  {
+  font-size: 0.9em;
+  font-weight: 400;
+  color: #CCCCCC;
+}
+
+section#section-news div.article-list-item-footer {
+    margin-top: 0.25em;
+}
+
+section#section-news div.article-list-item-content-grid > * {
+  padding: 0 0 0.5em 0;
+  font-family: 'Open Sans', serif;
+}
+
+section#section-news div.article-list-item-content {
+  font-size: 0;
+  padding: 0 1rem;
+}
+
+section#section-news div.article-list-item-content > div {
+  display: inline-block;
+  font-size: 1rem;
+  vertical-align: top;
+}
+
+section#section-news div.article-list-item-image-container {
+    width: 245px;
+    height: 120px;
+    margin: 0 1.5em 0 0;
+}
+
+section#section-news div.article-list-item-content-grid {
+  max-width: 74%;
+  padding-right: 0;
+}
+
+section#section-news div.article-list-item-image-container img {
+    width: 100%;
+    height: 100%;
+}
+
+section#section-news div.article-list-item-subtitle {
+    text-transform: uppercase;
+}
+
+section#section-news li {
+  -moz-transition: all .2s ease-in;
+  -o-transition: all .2s ease-in;
+  -webkit-transition: all .2s ease-in;
+  transition: all .2s ease-in;
+}
+
+section#section-news li:hover {
+  background: #012C61;
+  filter: brightness(125%);
+}

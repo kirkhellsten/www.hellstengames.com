@@ -1,0 +1,91 @@
+nav.news-nav {
+  background: #002F67;
+  font-family: "Open Sans", serif;
+  border-bottom: 1px solid hsla(0,0%,100%,.15);
+  border-top: 1px solid hsla(0,0%,100%,.15);
+  padding: 0.8em 0.8em 0.8em 2em;
+}
+
+nav.news-nav ol {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav.news-nav ol > li > ol {
+  position: absolute;
+  top: 8.2em;
+  left: 2em;
+  background: #272E3B;
+  border: solid 1px #121212;
+  z-index: 98;
+}
+
+nav.news-nav ol > li > ol a {
+    padding: 0.8em 1.5em;
+    display: flex;
+    min-width: 200px;
+    line-height: 1.8em;
+}
+
+nav.news-nav ol > li > ol li:first-child {
+    border-bottom: solid 1px hsla(0,0%,100%,.15);
+}
+
+nav.news-nav ol > li > ol a:hover {
+  background: rgb(50, 57, 69);
+}
+
+nav.news-nav ol > li:not(.active) > ol {
+    display: none;
+}
+
+nav.news-nav > ol > li > a {
+  -moz-transition: all .1s ease-in;
+  -o-transition: all .1s ease-in;
+  -webkit-transition: all .1s ease-in;
+  transition: all .1s ease-in;
+}
+
+
+nav.news-nav ol a {
+    text-decoration: none;
+    color: #DDDDDD;
+    font-size: 0.9em;
+    padding: 1em 0.8em 1em 0;
+}
+
+
+nav.news-nav i.down.arrow,
+nav.news-nav i.up.arrow {
+  position: relative;
+  border-color: #FFFFFF;
+}
+
+nav.news-nav i.arrow {
+
+}
+
+nav.news-nav li:hover i.arrow {
+  filter: brightness(600%);
+}
+
+nav.news-nav i.down.arrow {
+  left: 9px;
+  top: -3px;
+}
+
+nav.news-nav i.up.arrow {
+  left: 9px;
+  top: 0;
+}
+
+nav.news-nav li.active > a {
+  color: #009AE4;
+}
+
+nav.news-nav ol a img {
+  width: 24px;
+  height: 24px;
+  padding-right: 0.5em;
+}

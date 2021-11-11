@@ -1,0 +1,114 @@
+<html>
+<head>
+
+  <title>Basic JS Timer Demo 2</title>
+  
+  <script
+    src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+    crossorigin="anonymous"></script>
+
+    <style>
+      .t5-callback-div {
+        display: inline-block;
+        margin-right: 4em;
+      }
+    </style>
+
+    <script src="timer.js"></script>
+    <script>
+
+      $(document).ready(function() {
+
+        var timer1 = BasicJSTimer.CreateTimer(100, function(elapseTime) {
+          $("div#timer1").html("Elapse Time: " + elapseTime);
+        });
+        timer1.Start();
+
+        var timer2 = BasicJSTimer.CreateTimer(200, function(elapseTime) {
+          $("div#timer2").html("Elapse Time: " + elapseTime);
+        });
+        timer2.Start();
+
+        var timer3 = BasicJSTimer.CreateTimer(300, function(elapseTime) {
+          $("div#timer3").html("Elapse Time: " + elapseTime);
+        });
+        timer3.Start();
+
+        var timer4 = BasicJSTimer.CreateTimer(400, function(elapseTime) {
+          $("div#timer4").html("Elapse Time: " + elapseTime);
+        });
+        timer4.Start();
+
+        var timer5 = BasicJSTimer.CreateTimer(500, function(elapseTime) {
+          $("div#timer5").html("Elapse Time: " + elapseTime);
+        });
+        timer5.Start();
+
+        var timer6 = BasicJSTimer.CreateTimer(125, function(elapseTime) {
+          $("div#timer6").html("Elapse Time: " + elapseTime);
+        });
+        timer6.Start();
+
+        var timer7 = BasicJSTimer.CreateTimer(250, function(elapseTime) {
+          $("div#timer7").html("Elapse Time: " + elapseTime);
+        });
+        timer7.Start();
+
+        var timer8 = BasicJSTimer.CreateTimer(375, function(elapseTime) {
+          $("div#timer8").html("Elapse Time: " + elapseTime);
+        });
+        timer8.Start();
+
+        var timer9 = BasicJSTimer.CreateTimer(500, function(elapseTime) {
+          $("div#timer9").html("Elapse Time: " + elapseTime);
+        });
+        timer9.Start();
+
+        var timer10 = BasicJSTimer.CreateTimer(625, function(elapseTime) {
+          $("div#timer10").html("Elapse Time: " + elapseTime);
+        });
+        timer10.Start();
+
+      });
+
+    </script>
+
+</head>
+<body>
+  <h1>Basic JS Timer - Demo 2</h1>
+  <p>Timers with interval differences of 0.1s and 0.125s</p>
+  <h2>Timer 1</h2>
+  <div id="timer1">
+  </div>
+  <h2>Timer 2</h2>
+  <div id="timer2">
+  </div>
+  <h2>Timer 3</h2>
+  <div id="timer3">
+  </div>
+  <h2>Timer 4</h2>
+  <div id="timer4">
+  </div>
+  <h2>Timer 5</h2>
+  <div id="timer5">
+  </div>
+
+  <h2>Timer 6</h2>
+  <div id="timer6">
+  </div>
+  <h2>Timer 7</h2>
+  <div id="timer7">
+  </div>
+  <h2>Timer 8</h2>
+  <div id="timer8">
+  </div>
+  <h2>Timer 9</h2>
+  <div id="timer9">
+  </div>
+  <h2>Timer 10</h2>
+  <div id="timer10">
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,218 @@
+
+/**
+  Styling for Our Custom Slider
+**/
+section#section-main-page-promotion {
+  width: 100%;
+}
+
+div#promotion-slider {
+  width: 100%;
+  position: relative;
+  background-color: #000000;
+}
+
+div#promotion-slider > div.promotion-slider-item {
+  width: 100%;
+  height: 450px;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-color: #000000;
+  animation: slideitemflyin 6s ease-out;
+}
+
+@keyframes slideitemflyin {
+ 0%   {
+ background-position: 10% 0%;
+ opacity: 0%;
+ }
+ 10% {
+ background-position: 0% 0%;
+ opacity: 80%;
+ }
+ 15% {
+   background-position: 0% 0%;
+ opacity: 100%;
+ }
+ 100% {
+ background-position: 0% 0%;
+ opacity: 100%;
+ }
+}
+
+div#promotion-slider > div.promotion-slider-item {
+  display: none;
+}
+
+div#promotion-slider > div.promotion-slider-item.active {
+  display: block;
+}
+
+div#promotion-slider-tab-container {
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.3em;
+  height: 1.75em;
+  background: #0B0D12;
+  width: 100%;
+  text-align: center;
+
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+}
+
+section#section-main-page-promotion:hover .promotion-slider-arrow {
+  visibility: visible;
+  opacity: 1;
+}
+
+div#promotion-slider-tab-container div.promotion-tab-item {
+  width: 100px;
+  height: 7px;
+  background: gray;
+  display: inline-block;
+  cursor: pointer;
+  vertical-align: middle;
+  margin: 0em 0.3em;
+  transition: height .2s ease-in;
+}
+
+div.promotion-tab-item-progression-indicator {
+    background: #00AEFF;
+    height: 100%;
+}
+
+div#promotion-slider-tab-container div.promotion-tab-item.active {
+  transition-duration: .2s;
+  transition-timing-function: ease-in;
+  transition-property: background, color, height;
+}
+
+div#promotion-slider-tab-container div.promotion-tab-item:hover {
+  background: #CCCCCC;
+}
+
+div#promotion-slider-tab-container div.promotion-tab-item.active {
+  background: #0086CA;
+  height: 14px;
+}
+
+div#promotion-slider-arrow-container {
+    cursor: pointer;
+    font-size: 0rem;
+}
+
+div#promotion-slider-arrow-container > div.promotion-slider-arrow {
+  font-size: 1rem;
+  background: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  z-index: 99;
+  border: solid 1px #006FB2;
+  width: 40px;
+  height: 80px;
+}
+
+div#promotion-slider-arrow-container > div.promotion-slider-arrow:hover {
+  filter: brightness(150%);
+}
+
+div#promotion-slider-arrow-container > div.promotion-slider-arrow:hover .promotion-slider-arrow {
+  border-color: white;
+}
+
+.promotion-slider-arrow {
+  border: solid #006FB2;
+  border-width: 0 4px 4px 0;
+  visibility: hidden;
+  opacity: 0;
+  display: inline-block;
+  padding: 10px;
+  position: relative;
+  -moz-transition: all .15s ease-in;
+  -o-transition: all .15s ease-in;
+  -webkit-transition: all .15s ease-in;
+  transition: all .15s ease-in;
+}
+
+.promotion-slider-arrow-left {
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+  top: 17px;
+  left: 3px;
+}
+
+.promotion-slider-arrow-right {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  top: 17px;
+  right: 9px;
+}
+
+span.slide-title {
+  display: inline-block;
+  text-transform: uppercase;
+  font-size: 4em;
+  font-weight: bold;
+  width: 650px;
+  word-wrap: normal;
+  color: #FFFFFF;
+  font-family: "Helvetica";
+  text-shadow: 2px 2px 8px #555555;
+  position: absolute;
+  bottom: 25%;
+  left: 8%;
+  animation: flyin 1.35s ease-out;
+}
+
+a.slide-button {
+  display: inline-block;
+  animation: flyin 1.5s ease-out;
+  background: #006FB2;
+  border: solid 1px #00AEFF;
+  color: #FFFFFF !important;
+  padding: 0.6em 2em;
+  min-width: 8em;
+  text-align: center;
+  font-size: 1.2em;
+  font-weight: 100;
+  text-decoration: none !important;
+  position: absolute;
+  bottom: 10%;
+  left: 8%;
+  -moz-transition: all .15s ease-in;
+  -o-transition: all .15s ease-in;
+  -webkit-transition: all .15s ease-in;
+  transition: all .15s ease-in;
+}
+
+a.slide-button:hover {
+  filter: brightness(125%);
+  border: solid 1px #00AEFF;
+}
+
+@keyframes flyin {
+ 0%   {
+ transform: translateX(-25%);
+ opacity: 0%;
+ }
+ 40%   {
+ transform: translateX(-20%);
+ opacity: 0%;
+ }
+ 100% {
+ transform: translateX(0%);
+ opacity: 100%;
+ }
+}
+
+
+/**
+  END OF STYLING FOR CUSTOM SLIDER
+**/
