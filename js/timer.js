@@ -28,14 +28,14 @@ if (typeof __TIMER__INCLUDE__ === "undefined") {
   };
 
   function pauseTimers() {
-    for (let i = 0; i < timerList.size; ++i) {
-      timeList[i].Pause();
+    for (let i = 0; i < timerList.length; ++i) {
+      timerList[i].Pause();
     }
   }
 
   function resumeTimers() {
-    for (let i = 0; i < timerList.size; ++i) {
-      timeList[i].Resume();
+    for (let i = 0; i < timerList.length; ++i) {
+      timerList[i].Resume();
     }
   }
 
